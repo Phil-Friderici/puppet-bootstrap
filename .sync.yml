@@ -1,0 +1,9 @@
+---
+appveyor.yml:
+  delete: true
+
+.gitlab-ci.yml:
+  delete: true
+
+spec/spec_helper.rb:
+  coverage_report: true

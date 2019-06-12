@@ -1,0 +1,32 @@
+---
+bootstrap::admin_user: NULL
+bootstrap::dirs:
+  - /data
+  - /data/vhost
+  - /etc/mysociety
+bootstrap::packages:
+  - git
+  - make
+  - gcc
+  - apt-transport-https
+  - gnupg
+  - dirmngr
+bootstrap::groups:
+  anoncvs:
+    gid: '3001'
+  maint:
+    gid: '3004'
+  privatecvs:
+    gid: '3015'
+  privategit-puppet:
+    gid: '3055'
+  publiccvs:
+    gid: '3010'
+
+bootstrap::maint_public_ssh_key: ssh-rsa TestPublicKeyData maint@new-server-bootstrap
+bootstrap::maint_private_ssh_key: >
+  -----BEGIN RSA PRIVATE KEY-----
+  TestPrivateKeyData
+  -----END RSA PRIVATE KEY-----
+
+bootstrap::ssh_keys: NULL

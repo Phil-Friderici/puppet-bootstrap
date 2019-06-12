@@ -1,0 +1,39 @@
+{
+  "name": "mysociety-bootstrap",
+  "version": "0.1.0",
+  "author": "Sam Pearson",
+  "summary": "Bootstrap a mySociety server",
+  "license": "MIT",
+  "source": "https://github.com/mysociety/puppet-bootstrap",
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.25.1 < 7.0.0"
+    },
+    {
+      "name": "puppetlabs/vcsrepo",
+      "version_requirement": ">= 2.0.0 < 3.0.0"
+    },
+    {
+      "name": "saz/sudo",
+      "version_requirement": ">=5.0.0 < 7.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "9"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.10.0 < 7.0.0"
+    }
+  ],
+  "pdk-version": "1.10.0",
+  "template-url": "file:///opt/puppetlabs/pdk/share/cache/pdk-templates.git#1.10.0",
+  "template-ref": "1.10.0-0-gbba9ac3"
+}
