@@ -46,18 +46,6 @@ class bootstrap(
   String $maint_private_ssh_key,
 ) {
 
-  class { 'bootstrap::packages': }
-  -> class { 'bootstrap::sudo': }
-  -> class { 'bootstrap::groups': }
-  -> class { 'bootstrap::dirs': }
-  -> class { 'bootstrap::maint': }
-  -> class { 'bootstrap::sshkeys': }
-  -> class { 'bootstrap::git_fixperms': }
-  -> class { 'bootstrap::vcsrepo::scripts': }
-  -> class { 'bootstrap::vcsrepo::puppet': }
-  -> class { 'bootstrap::vcsrepo::servers': }
-  -> class { 'bootstrap::vcsrepo::state': }
-
   contain bootstrap::packages
   contain bootstrap::sudo
   contain bootstrap::groups
@@ -69,5 +57,17 @@ class bootstrap(
   contain bootstrap::vcsrepo::puppet
   contain bootstrap::vcsrepo::servers
   contain bootstrap::vcsrepo::state
+
+  Class['bootstrap::packages']
+  -> Class['bootstrap::sudo']
+  -> Class['bootstrap::groups']
+  -> Class['bootstrap::dirs']
+  -> Class['bootstrap::maint']
+  -> Class['bootstrap::sshkeys']
+  -> Class['bootstrap::git_fixperms']
+  -> Class['bootstrap::vcsrepo::scripts']
+  -> Class['bootstrap::vcsrepo::puppet']
+  -> Class['bootstrap::vcsrepo::servers']
+  -> Class['bootstrap::vcsrepo::state']
 
 }
