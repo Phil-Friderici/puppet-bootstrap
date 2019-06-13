@@ -48,7 +48,7 @@ class bootstrap::vcsrepo::puppet (
     ensure  => file,
     mode    => '0775',
     group   => 'privategit-puppet',
-    source  => 'puppet:///modules/bootstrap/vcsrepos/post-checkout',
+    source  => 'puppet:///modules/bootstrap/vcsrepo/post-checkout',
     require => Vcsrepo['/data/puppet'],
   }
 

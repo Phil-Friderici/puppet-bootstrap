@@ -48,7 +48,7 @@ class bootstrap::vcsrepo::servers (
     ensure  => file,
     mode    => '0775',
     group   => 'privatecvs',
-    source  => 'puppet:///modules/bootstrap/vcsrepos/post-checkout',
+    source  => 'puppet:///modules/bootstrap/vcsrepo/post-checkout',
     require => Vcsrepo['/data/servers'],
   }
 

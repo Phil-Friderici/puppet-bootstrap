@@ -32,7 +32,7 @@ describe 'bootstrap::vcsrepo::puppet' do
             'ensure'  => 'file',
             'mode'    => '0775',
             'group'   => 'privategit-puppet',
-            'source'  => 'puppet:///modules/bootstrap/vcsrepos/post-checkout',
+            'source'  => 'puppet:///modules/bootstrap/vcsrepo/post-checkout',
           ) \
           .that_requires('Vcsrepo[/data/puppet]')
 
