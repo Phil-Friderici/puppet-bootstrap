@@ -27,11 +27,7 @@ bootstrap::groups:
     gid: '3055'
   publiccvs:
     gid: '3010'
-
-bootstrap::maint_public_ssh_key: ssh-rsa TestPublicKeyData maint@new-server-bootstrap
-bootstrap::maint_private_ssh_key: >
-  -----BEGIN RSA PRIVATE KEY-----
-  TestPrivateKeyData
-  -----END RSA PRIVATE KEY-----
-
+bootstrap::root_auth_keys: NULL
 bootstrap::ssh_keys: NULL
+bootstrap::maint_public_ssh_key: ssh-rsa TestPublicKeyData maint@new-server-bootstrap
+bootstrap::maint_private_ssh_key: -----BEGIN RSA PRIVATE KEY-----

@@ -17,8 +17,11 @@
 #     List of core packages to be installed.
 #
 # @param groups
-#     Hash of groups and `gid`s suitable for passing to the 
+#     Hash of groups and `gid`s suitable for passing to the
 #     `group` resource via `create_resources`.
+#
+# @param root_auth_keys
+#     Hash of SSH keys for root to trust via the `ssh_authorized_key` type.
 #
 # @param ssh_keys
 #     Hash of sshkey resource definitions
@@ -37,6 +40,7 @@ class bootstrap(
   Array $dirs,
   Array $packages,
   Hash $groups,
+  Optional[Hash] $root_auth_keys,
   Optional[Hash] $ssh_keys,
   String $maint_public_ssh_key,
   String $maint_private_ssh_key,
