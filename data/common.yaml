@@ -5,12 +5,17 @@ bootstrap::dirs:
   - /data/vhost
   - /etc/mysociety
 bootstrap::packages:
-  - git
-  - make
-  - gcc
   - apt-transport-https
-  - gnupg
+  - curl
   - dirmngr
+  - gcc
+  - git
+  - gnupg
+  - less
+  - lsb-release
+  - make
+  - man
+  - wget
 bootstrap::groups:
   anoncvs:
     gid: '3001'
