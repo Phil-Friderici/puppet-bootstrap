@@ -1,0 +1,11 @@
+{
+  "puppet_task_version": 1,
+  "supports_noop": false,
+  "description": "Basic setup for a new EC2 instance",
+  "parameters": {
+    "hostname": {
+      "description": "The desired hostname",
+      "type": "Optional[String]"
+    }
+  }
+}
