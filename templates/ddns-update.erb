@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ "$1" == "--start" ]; then
+  /usr/bin/nsupdate -k "/etc/ddns-update/ec2.key" -v <<EOF
+server ns0.ukcod.org.uk
+zone <%= @ddns_domain %>
+update delete <%= @host_name %>.<%= @ddns_domain %> A
+update add <%= @host_name %>.<%= @ddns_domain %> 60 A <%= @ec2_metadata['public-ipv4'] %>
+send
+EOF
+elif [ "$1" == "--stop" ]; then
+  /usr/bin/nsupdate -k "/etc/ddns-update/ec2.key" -v <<EOF
+server ns0.ukcod.org.uk
+zone <%= @ddns_domain %>
+update delete <%= @host_name %>.<%= @ddns_domain %> A
+send
+EOF
+else
+  exit 1
+fi
+
+exit $?

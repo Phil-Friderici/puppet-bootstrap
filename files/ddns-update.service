@@ -1,0 +1,11 @@
+[Unit]
+Description=DDNS Updater
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/ddns-update --start
+ExecStop=/usr/local/bin/ddns-update --stop
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
