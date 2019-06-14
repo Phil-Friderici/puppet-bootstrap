@@ -14,7 +14,7 @@ bootstrap::packages:
   - less
   - lsb-release
   - make
-  - man
+  - man-db
   - wget
 bootstrap::groups:
   anoncvs:

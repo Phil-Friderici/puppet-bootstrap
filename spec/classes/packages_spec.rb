@@ -5,7 +5,7 @@ describe 'bootstrap::packages' do
     context "on #{os}" do
       let(:facts) { os_facts }
 
-      let(:pre_condition) { 'class { "bootstrap": packages => ["apt-transport-https", "curl", "dirmngr", "gcc", "git", "gnupg", "less", "lsb-release", "make", "man", "wget"] }' }
+      let(:pre_condition) { 'class { "bootstrap": packages => ["apt-transport-https", "curl", "dirmngr", "gcc", "git", "gnupg", "less", "lsb-release", "make", "man-db", "wget"] }' }
 
       it { is_expected.to compile }
 
@@ -19,7 +19,7 @@ describe 'bootstrap::packages' do
         'less',
         'lsb-release',
         'make',
-        'man',
+        'man-db',
         'wget',
       ].each do |package|
         it do
