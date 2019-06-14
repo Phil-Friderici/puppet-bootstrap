@@ -4,7 +4,7 @@ describe 'bootstrap::ec2' do
   on_supported_os.each do |os, os_facts|
     context "on #{os}" do
       let(:facts) { os_facts.merge('ec2_metadata' => { 'public-ipv4' => '54.1.2.3' }) }
-      let(:params) { { 'ddns_key' => 'key "ec2.mysociety.org" { algorithm hmac-sha512; secret "foobar"; };' } }
+      let(:params) { { 'ddns_key' => { 'algorithm' => 'hmac-sha512', 'secret' => 'foobar' } } }
 
       it do
         is_expected.to compile

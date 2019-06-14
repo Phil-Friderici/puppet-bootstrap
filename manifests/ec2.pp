@@ -1,12 +1,24 @@
-# @summary A short summary of the purpose of this class
 #
-# A description of what this class does
+# @summary Sets up an EC2 host with DDNS
+#
+# This configures and EC2 host with the necessary configuration to
+# register its hostname with our dynamic ec2.mysociety.org domain.
+#
+# @param ddns_key
+#     A hash containing at least `algorithm` and `secret` keys for the
+#     DDNS key file.
+#
+# @param host_name
+#     Hostname to use. Defaults to a munged form of the Public IP.
+#
+# @param ddns_domain
+#     Domain to use for the DDNS key.
 #
 # @example
 #   include bootstrap::ec2
 #
 class bootstrap::ec2(
-  String $ddns_key,
+  Hash $ddns_key,
   String $host_name   = regsubst($facts['ec2_metadata']['public-ipv4'], '\.', '-', 'G'),
   String $ddns_domain = 'ec2.mysociety.org',
 ) {
@@ -28,7 +40,7 @@ class bootstrap::ec2(
     owner     => 'root',
     group     => 'root',
     show_diff => false,
-    content   => $ddns_key,
+    content   => template('bootstrap/ec2.key.erb'),
   }
 
   -> file { '/usr/local/bin/ddns-update':
