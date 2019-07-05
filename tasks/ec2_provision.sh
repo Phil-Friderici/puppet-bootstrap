@@ -35,6 +35,9 @@ nameserver 8.8.8.8
 nameserver 8.8.4.4
 EOF
 
+# Prevent dhclient from breaking resolv.conf
+echo 'make_resolv_conf() { :; }' > /etc/dhcp/dhclient-enter-hooks.d/resolv-conf
+
 # Prefer IPv4
 echo 'precedence ::ffff:0:0/96  100' > /etc/gai.conf
 
