@@ -3,7 +3,7 @@
   "supports_noop": false,
   "description": "Basic setup for a new EC2 instance",
   "parameters": {
-    "hostname": {
+    "host_name": {
       "description": "The desired hostname",
       "type": "Optional[String]"
     }
