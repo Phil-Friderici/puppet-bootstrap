@@ -47,6 +47,9 @@ if [ ! -e "/root/.ssh/id_rsa" ] ; then
 fi
 ROOT_SSH_KEY=$(cat /root/.ssh/id_rsa.pub)
 
+# remove admin user
+/usr/sbin/userdel -f -r admin
+
 # Output
 cat <<EOF
 {
