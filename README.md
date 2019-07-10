@@ -1,5 +1,7 @@
 # mySociety Server Bootstrap
 
+[![Build Status](https://travis-ci.org/mysociety/puppet-bootstrap.svg?branch=master)](https://travis-ci.org/mysociety/puppet-bootstrap)
+
 This Puppet module is used to bootstrap a server ready for integration
 into mySociety's infrastructure. It is not intended for use beyond
 mySociety but may contain examples, patterns, etc that are of interest.
