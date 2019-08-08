@@ -5,7 +5,7 @@ public_ip=`/usr/bin/curl -s http://169.254.169.254/latest/meta-data/public-ipv4`
 
 # Derive hostname.
 # Unless we've been given a hostname to use, use the Public IP.
-if [ "$PT_host_name" == "" ] || [ "$PT_host_name" == "null"] ; then
+if [ "$PT_host_name" = "auto" ] ; then
   my_hostname=$(echo $public_ip | sed -e 's/\./-/g')
 else
   my_hostname=$PT_host_name
