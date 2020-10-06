@@ -8,34 +8,29 @@ describe 'bootstrap::vcsrepo::state' do
       it do
         is_expected.to compile
 
-        is_expected.to contain_file('/data/state') \
+        is_expected.to contain_file('/var/lib/server-state') \
           .with(
             'ensure' => 'directory',
             'owner'  => 'root',
-            'group'  => 'privatecvs',
+            'group'  => 'staff',
             'mode'   => '0775',
           )
 
-        is_expected.to contain_vcsrepo('/data/state') \
+        is_expected.to contain_vcsrepo('/var/lib/server-state') \
           .with(
             'ensure'   => 'present',
-            'user'     => 'maint',
-            'group'    => 'privatecvs',
+            'user'     => 'root',
+            'group'    => 'staff',
             'provider' => 'git',
-            'source'   => 'ssh://git.mysociety.org/data/git/private/mysociety-state.git',
           ) \
           .that_notifies('Exec[fixperms-state]')
 
         is_expected.to contain_exec('fixperms-state') \
           .with(
-            'cwd'         => '/data',
-            'command'     => '/bin/chgrp -R privatecvs ./state',
+            'cwd'         => '/var/lib',
+            'command'     => '/bin/chgrp -R staff ./server-state',
             'refreshonly' => true,
           )
-
-        is_expected.to contain_file('/data/state/test-host') \
-          .with('ensure' => 'directory') \
-          .that_requires('Vcsrepo[/data/state]')
       end
     end
   end

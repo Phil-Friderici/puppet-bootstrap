@@ -1,7 +1,5 @@
 #
-# @summary Manages a working copy of state at `/data/state`
-#
-# Manages a local working copy of the state repository.
+# @summary Manages a local git repo at `/var/lib/server-state`
 #
 # @param repo_ensure
 #     The `ensure` parameter to set on the `vcsrepo` resource.
@@ -15,31 +13,25 @@ class bootstrap::vcsrepo::state (
   String $repo_ensure = 'present',
 ) {
 
-  file { '/data/state':
+  file { '/var/lib/server-state':
     ensure => directory,
     owner  => 'root',
-    group  => 'privatecvs',
+    group  => 'staff',
     mode   => '0775',
   }
 
-  vcsrepo { '/data/state':
+  vcsrepo { '/var/lib/server-state':
     ensure   => $repo_ensure,
-    user     => 'maint',
-    group    => 'privatecvs',
+    user     => 'root',
+    group    => 'staff',
     provider => 'git',
-    source   => 'ssh://git.mysociety.org/data/git/private/mysociety-state.git',
     notify   => Exec['fixperms-state'],
   }
 
   exec { 'fixperms-state':
-    cwd         => '/data',
-    command     => '/bin/chgrp -R privatecvs ./state',
+    cwd         => '/var/lib',
+    command     => '/bin/chgrp -R staff ./server-state',
     refreshonly => true,
-  }
-
-  file { "/data/state/${facts['networking']['hostname']}":
-    ensure  => directory,
-    require => Vcsrepo['/data/state'],
   }
 
 }
