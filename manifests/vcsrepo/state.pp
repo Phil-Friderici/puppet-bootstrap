@@ -17,7 +17,7 @@ class bootstrap::vcsrepo::state (
     ensure => directory,
     owner  => 'root',
     group  => 'staff',
-    mode   => '0775',
+    mode   => '0750',
   }
 
   vcsrepo { '/var/lib/server-state':

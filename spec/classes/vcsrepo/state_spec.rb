@@ -13,7 +13,7 @@ describe 'bootstrap::vcsrepo::state' do
             'ensure' => 'directory',
             'owner'  => 'root',
             'group'  => 'staff',
-            'mode'   => '0775',
+            'mode'   => '0750',
           )
 
         is_expected.to contain_vcsrepo('/var/lib/server-state') \
