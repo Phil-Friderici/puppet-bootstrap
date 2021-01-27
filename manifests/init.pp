@@ -54,7 +54,6 @@ class bootstrap(
   contain bootstrap::sshkeys
   contain bootstrap::git_fixperms
   contain bootstrap::vcsrepo::scripts
-  contain bootstrap::vcsrepo::puppet
   contain bootstrap::vcsrepo::servers
   contain bootstrap::vcsrepo::state
 
@@ -66,7 +65,6 @@ class bootstrap(
   -> Class['bootstrap::sshkeys']
   -> Class['bootstrap::git_fixperms']
   -> Class['bootstrap::vcsrepo::scripts']
-  -> Class['bootstrap::vcsrepo::puppet']
   -> Class['bootstrap::vcsrepo::servers']
   -> Class['bootstrap::vcsrepo::state']
 

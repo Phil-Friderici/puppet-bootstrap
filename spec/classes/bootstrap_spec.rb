@@ -14,8 +14,7 @@ describe 'bootstrap' do
         is_expected.to contain_class('bootstrap::maint').that_comes_before('Class[bootstrap::sshkeys]')
         is_expected.to contain_class('bootstrap::sshkeys').that_comes_before('Class[bootstrap::git_fixperms]')
         is_expected.to contain_class('bootstrap::git_fixperms').that_comes_before('Class[bootstrap::vcsrepo::scripts]')
-        is_expected.to contain_class('bootstrap::vcsrepo::scripts').that_comes_before('Class[bootstrap::vcsrepo::puppet]')
-        is_expected.to contain_class('bootstrap::vcsrepo::puppet').that_comes_before('Class[bootstrap::vcsrepo::servers]')
+        is_expected.to contain_class('bootstrap::vcsrepo::scripts').that_comes_before('Class[bootstrap::vcsrepo::servers]')
         is_expected.to contain_class('bootstrap::vcsrepo::servers').that_comes_before('Class[bootstrap::vcsrepo::state]')
         is_expected.to contain_class('bootstrap::vcsrepo::state')
       end
