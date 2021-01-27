@@ -5,5 +5,8 @@ appveyor.yml:
 .gitlab-ci.yml:
   delete: true
 
+.travis.yml:
+  delete: true
+
 spec/spec_helper.rb:
   coverage_report: true
