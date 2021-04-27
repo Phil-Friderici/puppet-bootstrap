@@ -31,3 +31,8 @@ bootstrap::root_auth_keys: NULL
 bootstrap::ssh_keys: NULL
 bootstrap::maint_public_ssh_key: ssh-rsa TestPublicKeyData maint@new-server-bootstrap
 bootstrap::maint_private_ssh_key: -----BEGIN RSA PRIVATE KEY-----
+
+bootstrap::ddns::ddns_domain: 'ec2.mysociety.org'
+bootstrap::ddns::ddns_key:
+  algorithm: 'hmac-sha512'
+  secret: 'foobar'
