@@ -8,14 +8,6 @@ describe 'bootstrap::vcsrepo::state' do
       it do
         is_expected.to compile
 
-        is_expected.to contain_file('/var/lib/server-state') \
-          .with(
-            'ensure' => 'directory',
-            'owner'  => 'root',
-            'group'  => 'staff',
-            'mode'   => '0750',
-          )
-
         is_expected.to contain_vcsrepo('/var/lib/server-state') \
           .with(
             'ensure'   => 'present',
@@ -28,9 +20,9 @@ describe 'bootstrap::vcsrepo::state' do
         is_expected.to contain_exec('fixperms-state') \
           .with(
             'cwd'         => '/var/lib',
-            'command'     => '/bin/chgrp -R staff ./server-state',
             'refreshonly' => true,
-          )
+          ) \
+          .with_command('/bin/chgrp -R staff ./server-state && chmod o-rwx ./server-state')
       end
     end
   end

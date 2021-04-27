@@ -13,13 +13,6 @@ class bootstrap::vcsrepo::state (
   String $repo_ensure = 'present',
 ) {
 
-  file { '/var/lib/server-state':
-    ensure => directory,
-    owner  => 'root',
-    group  => 'staff',
-    mode   => '0750',
-  }
-
   vcsrepo { '/var/lib/server-state':
     ensure   => $repo_ensure,
     user     => 'root',
@@ -30,7 +23,7 @@ class bootstrap::vcsrepo::state (
 
   exec { 'fixperms-state':
     cwd         => '/var/lib',
-    command     => '/bin/chgrp -R staff ./server-state',
+    command     => '/bin/chgrp -R staff ./server-state && chmod o-rwx ./server-state',
     refreshonly => true,
   }
 
