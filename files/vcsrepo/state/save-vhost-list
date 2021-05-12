@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Don't try if no vhosts available at all
+if [ ! -d /data/vhost ]
+then
+    exit
+fi
+
+# Record list of vhosts deployed in checked in, backed up file
+set -e
+msg="save-vhost-list: vhosts deployed on $(hostname) changed"
+cd /var/lib/server-state/
+ls -1 /data/vhost | grep -v '.gz$' > ./vhost-list.new
+if [ -e vhost-list ] ; then
+    if ! diff vhost-list vhost-list.new > /dev/null ; then
+        mv vhost-list.new vhost-list
+        git add vhost-list
+        git commit --quiet -m "$msg"
+    else
+        rm vhost-list.new
+    fi
+else
+    mv vhost-list.new vhost-list
+    git add vhost-list
+    git commit --quiet -m "$msg"
+fi

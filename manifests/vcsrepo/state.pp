@@ -27,4 +27,21 @@ class bootstrap::vcsrepo::state (
     refreshonly => true,
   }
 
+  file {
+    default:
+      ensure => 'file',
+      owner  => 'root',
+      group  => 'root',
+      mode   => '0755';
+
+    '/etc/cron.daily/save-package-list':
+      source => 'puppet:///modules/bootstrap/vcsrepo/state/save-package-list';
+
+    '/etc/cron.daily/save-passwd-group':
+      source => 'puppet:///modules/bootstrap/vcsrepo/state/save-passwd-group';
+
+    '/etc/cron.daily/save-vhost-list':
+      source => 'puppet:///modules/bootstrap/vcsrepo/state/save-vhost-list';
+  }
+
 }

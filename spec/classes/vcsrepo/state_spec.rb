@@ -23,6 +23,10 @@ describe 'bootstrap::vcsrepo::state' do
             'refreshonly' => true,
           ) \
           .with_command('/bin/chgrp -R staff ./server-state && chmod o-rwx ./server-state')
+
+        is_expected.to contain_file('/etc/cron.daily/save-package-list')
+        is_expected.to contain_file('/etc/cron.daily/save-passwd-group')
+        is_expected.to contain_file('/etc/cron.daily/save-vhost-list')
       end
     end
   end
