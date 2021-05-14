@@ -54,6 +54,17 @@ describe 'bootstrap::vcsrepo::servers' do
             'creates' => '/data/fonts',
           ) \
           .that_requires('Vcsrepo[/data/servers]')
+
+        is_expected.to contain_cron__job('check-uncommitted-servers') \
+          .with(
+            'ensure'      => 'present',
+            'environment' => [ 'MAILTO=infrastructure@mysociety.org' ],
+            'hour'        => '6',
+            'minute'      => '57',
+            'weekday'     => '7',
+            'user'        => 'root',
+            'command'     => 'cd /data/servers && git diff -u',
+          )
       end
     end
   end

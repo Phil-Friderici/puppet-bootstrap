@@ -49,4 +49,15 @@ class bootstrap::vcsrepo::scripts (
     creates => '/data/mysociety/run-with-lockfile/run-with-lockfile',
     require => Vcsrepo['/data/mysociety'],
   }
+
+  cron::job { 'check-uncommitted-scripts':
+    ensure      => 'present',
+    environment => [ 'MAILTO=infrastructure@mysociety.org', ],
+    hour        => '6',
+    minute      => '59',
+    weekday     => '7',
+    user        => 'root',
+    command     => 'cd /data/mysociety && git diff -u',
+  }
+
 }

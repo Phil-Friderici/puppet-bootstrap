@@ -37,6 +37,17 @@ describe 'bootstrap::vcsrepo::scripts' do
             'creates' => '/data/mysociety/run-with-lockfile/run-with-lockfile',
           ) \
           .that_requires('Vcsrepo[/data/mysociety]')
+
+        is_expected.to contain_cron__job('check-uncommitted-scripts') \
+          .with(
+            'ensure'      => 'present',
+            'environment' => [ 'MAILTO=infrastructure@mysociety.org' ],
+            'hour'        => '6',
+            'minute'      => '59',
+            'weekday'     => '7',
+            'user'        => 'root',
+            'command'     => 'cd /data/mysociety && git diff -u',
+          )
       end
     end
   end

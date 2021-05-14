@@ -7,4 +7,6 @@ fixtures:
      vcsrepo: "puppetlabs/vcsrepo"
      sudo: "saz/sudo"
      sshkeys_core: "puppetlabs/sshkeys_core"
+     cron: "puppet/cron"
+
 
