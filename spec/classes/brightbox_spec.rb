@@ -11,6 +11,9 @@ describe 'bootstrap::brightbox' do
             'instance-id' => 'srv-ab1c2',
             'public-ipv4' => '54.1.2.3',
           },
+          'networking' => {
+            'ip6'      => '::1',
+          },
         )
       end
 

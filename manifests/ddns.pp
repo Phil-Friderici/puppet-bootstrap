@@ -16,8 +16,9 @@
 class bootstrap::ddns(
     Hash $ddns_key,
     String $ddns_domain,
-    String $public_ipv4 = $facts['ec2_metadata']['public-ipv4'],
-    String $host_name   = $facts['networking']['hostname'],
+    String $public_ipv4  = $facts['ec2_metadata']['public-ipv4'],
+    String $ipv6_address = $facts['networking']['ip6'],
+    String $host_name    = $facts['networking']['hostname'],
 ) {
 
   ensure_packages('dnsutils', {ensure => 'present'})

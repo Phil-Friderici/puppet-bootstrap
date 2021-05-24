@@ -12,6 +12,7 @@ describe 'bootstrap::ddns' do
           },
           'networking' => {
             'hostname' => '54-1-2-3',
+            'ip6'      => '::1',
           },
         )
       end

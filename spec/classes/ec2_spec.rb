@@ -8,6 +8,9 @@ describe 'bootstrap::ec2' do
           'ec2_metadata' => {
             'public-ipv4' => '54.1.2.3',
           },
+          'networking' => {
+            'ip6'      => '::1',
+          },
         )
       end
 

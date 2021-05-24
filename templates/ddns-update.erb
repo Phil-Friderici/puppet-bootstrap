@@ -5,7 +5,9 @@ if [ "$1" == "--start" ]; then
 server ns0.ukcod.org.uk
 zone <%= @ddns_domain %>
 update delete <%= @host_name %>.<%= @ddns_domain %> A
+update delete <%= @host_name %>.<%= @ddns_domain %> AAAA
 update add <%= @host_name %>.<%= @ddns_domain %> 60 A <%= @public_ipv4 %>
+update add <%= @host_name %>.<%= @ddns_domain %> 60 AAAA <%= @ipv6_address %>
 send
 EOF
 elif [ "$1" == "--stop" ]; then
@@ -13,6 +15,7 @@ elif [ "$1" == "--stop" ]; then
 server ns0.ukcod.org.uk
 zone <%= @ddns_domain %>
 update delete <%= @host_name %>.<%= @ddns_domain %> A
+update delete <%= @host_name %>.<%= @ddns_domain %> AAAA
 send
 EOF
 else
