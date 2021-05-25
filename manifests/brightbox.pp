@@ -12,12 +12,13 @@
 #   include bootstrap::brightbox
 #
 class bootstrap::brightbox(
-  String $host_name = $facts['ec2_metadata']['instance-id']
+  String $host_name   = $facts['ec2_metadata']['instance-id'],
+  String $ddns_domain = 'ec2.mysociety.org',
 ) {
 
   exec { 'set-hostname':
-    command => "/usr/bin/hostnamectl set-hostname ${host_name}",
-    unless  => "/usr/bin/test $(/bin/hostname) = ${host_name}",
+    command => "/usr/bin/hostnamectl set-hostname ${host_name}.${ddns_domain}",
+    unless  => "/usr/bin/test $(/bin/hostname) = ${host_name}.${ddns_domain}",
   }
 
   -> class { '::bootstrap::ddns':
