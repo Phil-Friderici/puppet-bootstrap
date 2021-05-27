@@ -1,6 +1,6 @@
 {
   "name": "mysociety-bootstrap",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Sam Pearson",
   "summary": "Bootstrap a mySociety server",
   "license": "MIT",
@@ -13,10 +13,6 @@
     {
       "name": "puppetlabs/vcsrepo",
       "version_requirement": ">= 2.0.0 < 4.0.0"
-    },
-    {
-      "name": "saz/sudo",
-      "version_requirement": ">=5.0.0 < 7.0.0"
     },
     {
       "name": "puppet/cron",

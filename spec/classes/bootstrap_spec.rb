@@ -7,8 +7,7 @@ describe 'bootstrap' do
 
       it do
         is_expected.to compile
-        is_expected.to contain_class('bootstrap::packages').that_comes_before('Class[bootstrap::sudo]')
-        is_expected.to contain_class('bootstrap::sudo').that_comes_before('Class[bootstrap::groups]')
+        is_expected.to contain_class('bootstrap::packages').that_comes_before('Class[bootstrap::groups]')
         is_expected.to contain_class('bootstrap::groups').that_comes_before('Class[bootstrap::dirs]')
         is_expected.to contain_class('bootstrap::dirs').that_comes_before('Class[bootstrap::maint]')
         is_expected.to contain_class('bootstrap::maint').that_comes_before('Class[bootstrap::sshkeys]')

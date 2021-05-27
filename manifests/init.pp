@@ -47,7 +47,6 @@ class bootstrap(
 ) {
 
   contain bootstrap::packages
-  contain bootstrap::sudo
   contain bootstrap::groups
   contain bootstrap::dirs
   contain bootstrap::maint
@@ -56,7 +55,6 @@ class bootstrap(
   contain bootstrap::vcsrepo::state
 
   Class['bootstrap::packages']
-  -> Class['bootstrap::sudo']
   -> Class['bootstrap::groups']
   -> Class['bootstrap::dirs']
   -> Class['bootstrap::maint']
