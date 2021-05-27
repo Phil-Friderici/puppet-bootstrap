@@ -52,9 +52,7 @@ class bootstrap(
   contain bootstrap::dirs
   contain bootstrap::maint
   contain bootstrap::sshkeys
-  contain bootstrap::git_fixperms
   contain bootstrap::vcsrepo::scripts
-  contain bootstrap::vcsrepo::servers
   contain bootstrap::vcsrepo::state
 
   Class['bootstrap::packages']
@@ -63,9 +61,7 @@ class bootstrap(
   -> Class['bootstrap::dirs']
   -> Class['bootstrap::maint']
   -> Class['bootstrap::sshkeys']
-  -> Class['bootstrap::git_fixperms']
   -> Class['bootstrap::vcsrepo::scripts']
-  -> Class['bootstrap::vcsrepo::servers']
   -> Class['bootstrap::vcsrepo::state']
 
 }
