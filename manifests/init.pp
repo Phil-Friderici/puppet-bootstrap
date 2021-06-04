@@ -51,7 +51,6 @@ class bootstrap(
   contain bootstrap::dirs
   contain bootstrap::maint
   contain bootstrap::sshkeys
-  contain bootstrap::vcsrepo::scripts
   contain bootstrap::vcsrepo::state
 
   Class['bootstrap::packages']
@@ -59,7 +58,6 @@ class bootstrap(
   -> Class['bootstrap::dirs']
   -> Class['bootstrap::maint']
   -> Class['bootstrap::sshkeys']
-  -> Class['bootstrap::vcsrepo::scripts']
   -> Class['bootstrap::vcsrepo::state']
 
 }
