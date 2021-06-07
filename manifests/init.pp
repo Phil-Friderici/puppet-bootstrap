@@ -42,19 +42,15 @@ class bootstrap(
   Hash $groups,
   Optional[Hash] $root_auth_keys,
   Optional[Hash] $ssh_keys,
-  String $maint_public_ssh_key,
-  String $maint_private_ssh_key,
 ) {
 
   contain bootstrap::packages
   contain bootstrap::groups
   contain bootstrap::dirs
-  contain bootstrap::maint
   contain bootstrap::sshkeys
 
   Class['bootstrap::packages']
   -> Class['bootstrap::groups']
   -> Class['bootstrap::dirs']
-  -> Class['bootstrap::maint']
   -> Class['bootstrap::sshkeys']
 }
